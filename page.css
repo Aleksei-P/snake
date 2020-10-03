@@ -3,17 +3,16 @@
   /* we don't know how to make mobile versions of websites yet, */
   /* so here we've set a minimum page width */
   max-width: 580px;
-  max-height: 400px;
   margin: auto;
    /* here we've set a maximum page width */
     /* this ensures that all content is centered on screens wider than 1600px */
   color: black;
-  background-color:black;
+  background-color: black;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: calc(100% - 20px);  
+   
 }
 
 .cover__link {
