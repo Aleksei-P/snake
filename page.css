@@ -1,8 +1,8 @@
 .page {
-  min-width: 320px;
+  /* min-width: 320px; */
   /* we don't know how to make mobile versions of websites yet, */
   /* so here we've set a minimum page width */
-  max-width: 580px;
+  max-width: 600px;
   margin: auto;
    /* here we've set a maximum page width */
     /* this ensures that all content is centered on screens wider than 1600px */
@@ -21,10 +21,10 @@
   align-items: center;
   flex-direction: column;
   text-decoration: none;
-  min-height: 120px;
-  max-height: 240px;
-  min-width: 120px;
-  max-width: 240px;
+  min-height: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  max-width: 100px;
   width: fit-content;
   color: white;
   position: relative;
@@ -33,7 +33,7 @@
   background-position: center;
   background-size: cover;
   border-radius: 40px;
-  margin: 30px;
+  margin: 10px;
 }
 
 .cover__link-1 {
@@ -42,10 +42,10 @@
   align-items: center;
   flex-direction: column;
   text-decoration: none;
-  min-height: 120px;
-  max-height: 240px;
-  min-width: 120px;
-  max-width: 240px;
+ min-height: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  max-width: 100px;
   width: fit-content;
   color: white;
   position: relative;
@@ -54,7 +54,7 @@
   background-position: center;
   background-size: cover;
   border-radius: 40px;
-  margin: 30px;
+  margin: 10px;
   transition: opacity 5.5s;
 }
 
@@ -64,10 +64,10 @@
   align-items: center;
   flex-direction: column;
   text-decoration: none;
-  min-height: 120px;
-  max-height: 240px;
-  min-width: 120px;
-  max-width: 240px;
+ min-height: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  max-width: 100px;
   width: fit-content;
   color: white;
   position: relative;
@@ -76,7 +76,7 @@
   background-position: center;
   background-size: cover;
   border-radius: 40px;
-  margin: 30px;
+  margin: 10px;
   transition: opacity 5.5s;
 }
 
@@ -86,10 +86,10 @@
   align-items: center;
   flex-direction: column;
   text-decoration: none;
-  min-height: 120px;
-  max-height: 240px;
-  min-width: 120px;
-  max-width: 240px;
+  min-height: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  max-width: 100px;
   width: fit-content;
   color: white;
   position: relative;
@@ -98,7 +98,7 @@
   background-position: center;
   background-size: cover;
   border-radius: 40px;
-  margin: 30px;
+  margin: 10px;
   transition: opacity 5.5s;
 }
 
@@ -108,10 +108,10 @@
   align-items: center;
   flex-direction: column;
   text-decoration: none;
-  min-height: 120px;
-  max-height: 240px;
-  min-width: 120px;
-  max-width: 240px;
+min-height: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  max-width: 100px;
   width: fit-content;
   color: white;
   position: relative;
@@ -120,7 +120,7 @@
   background-position: center;
   background-size: cover;
   border-radius: 40px;
-  margin: 30px;
+  margin: 10px;
   transition: opacity 5.5s;
 }
 
@@ -130,10 +130,10 @@
   align-items: center;
   flex-direction: column;
   text-decoration: none;
-  min-height: 120px;
-  max-height: 240px;
-  min-width: 120px;
-  max-width: 240px;
+ min-height: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  max-width: 100px;
   width: fit-content;
   color: white;
   position: relative;
@@ -142,7 +142,7 @@
   background-position: center;
   background-size: cover;
   border-radius: 40px;
-  margin: 30px;
+  margin: 10px;
   transition: opacity 5.5s;
 }
 
@@ -152,10 +152,10 @@
   align-items: center;
   flex-direction: column;
   text-decoration: none;
-  min-height: 120px;
-  max-height: 240px;
-  min-width: 120px;
-  max-width: 240px;
+  min-height: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  max-width: 100px;
   width: fit-content;
   color: white;
   position: relative;
@@ -164,7 +164,7 @@
   background-position: center;
   background-size: cover;
   border-radius: 40px;
-  margin: 30px;
+  margin: 10px;
   transition: opacity 5.5s;
 }
 
