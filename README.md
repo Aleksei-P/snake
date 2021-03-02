@@ -1,0 +1,1 @@
+https://aleksei-p.github.io/test-all/
