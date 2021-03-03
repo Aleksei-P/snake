@@ -8,17 +8,20 @@ const food = new Image();
 food.src = "Food3.png";
 
 
-let sizeSector = 80;
+let sizeSector = 17;
+
+let score = 0;
+
 
 let foodOnMap = {
-    x: Math.floor((Math.random() * 8 )) * sizeSector,
-    y: Math.floor((Math.random() * 8 )) * sizeSector
+    x: Math.floor((Math.random() * 38 )) * sizeSector,
+    y: Math.floor((Math.random() * 38 )) * sizeSector
 }
 
 let snake = [];
 snake[0] = {
-    x: 4 * sizeSector,
-    y: 4 * sizeSector
+    x: 20 * sizeSector,
+    y: 20 * sizeSector
 }
 
 document.addEventListener("keydown", move);
@@ -39,6 +42,7 @@ function eatTail (head, arr) {
     for(let i = 0; i < arr.length; i++) {
         if (head.x == arr[i].x && head.y == arr[i].y)
         clearInterval(gameMap);
+        
     }
 }
 
@@ -52,22 +56,32 @@ function drawGame() {
         ctx.fillRect(snake[i].x, snake[i].y, sizeSector, sizeSector);
     }
 
+    
+
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
 
     if (snakeX == foodOnMap.x && snakeY == foodOnMap.y) {
+        score++;
         foodOnMap = {
-            x: Math.floor((Math.random() * 8)) * sizeSector,
-            y: Math.floor((Math.random() * 8)) * sizeSector
+            x: Math.floor((Math.random() * 38)) * sizeSector,
+            y: Math.floor((Math.random() * 38)) * sizeSector
         };
     }
         else {
             snake.pop();
         }
+        
+        function resetGame() {
+            clearInterval(gameMap);
+        }
 
-        if (snakeX < sizeSector || snakeX > sizeSector * 6 
-            || snakeY < sizeSector || snakeY > sizeSector * 6) {
-            clearInterval(gameMap)};
+        if (snakeX < sizeSector || snakeX > sizeSector * 38 
+            || snakeY < sizeSector || snakeY > sizeSector * 38) {
+                ctx.fillStyle = "DarkOrchid	";
+                ctx.font = "50px Arial";
+                ctx.fillText(score + " " + "Соберись Обормот!", sizeSector * 3, sizeSector * 8);
+                resetGame() };
        
         if (side == "left")
         snakeX -= sizeSector;
@@ -88,4 +102,4 @@ function drawGame() {
         snake.unshift(head)
     }
 
-let gameMap = setInterval(drawGame, 400); //интервал прорисовки
+let gameMap = setInterval(drawGame, 120); //интервал прорисовки
