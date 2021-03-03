@@ -40,9 +40,11 @@ function move(evt) {
 
 function eatTail (head, arr) {
     for(let i = 0; i < arr.length; i++) {
-        if (head.x == arr[i].x && head.y == arr[i].y)
-        clearInterval(gameMap);
-        
+        if (head.x == arr[i].x && head.y == arr[i].y) {
+        ctx.fillStyle = "DarkOrchid	";
+        ctx.font = "50px Arial";
+        ctx.fillText(score + " " + "Соберись Обормот!", sizeSector * 3, sizeSector * 8);
+        clearInterval(gameMap); }
     }
 }
 
@@ -102,4 +104,4 @@ function drawGame() {
         snake.unshift(head)
     }
 
-let gameMap = setInterval(drawGame, 120); //интервал прорисовки
+let gameMap = setInterval(drawGame, 110); //интервал прорисовки
