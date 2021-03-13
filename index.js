@@ -12,11 +12,20 @@ let sizeSector = 17;
 
 let score = 0;
 
+function foodOnMapFunc(min, max) {
+    return (Math.floor(Math.random() * (max - min + 1)) + min) * sizeSector;
+}
 
 let foodOnMap = {
-    x: Math.floor((Math.random() * 38 )) * sizeSector,
-    y: Math.floor((Math.random() * 38 )) * sizeSector
+    x: foodOnMapFunc(2, 36),
+    y: foodOnMapFunc(2, 36)
 }
+/*
+let foodOnMap = {
+    x: Math.floor((Math.random() * 36)) * sizeSector,
+    y: Math.floor((Math.random() * 36)) * sizeSector
+}
+*/
 
 let snake = [];
 snake[0] = {
@@ -43,7 +52,7 @@ function eatTail (head, arr) {
         if (head.x == arr[i].x && head.y == arr[i].y) {
         ctx.fillStyle = "DarkOrchid	";
         ctx.font = "50px Arial";
-        ctx.fillText(score + " " + "Соберись Обормот!", sizeSector * 3, sizeSector * 8);
+        ctx.fillText(score + " " + "уровень!", sizeSector * 3, sizeSector * 8);
         clearInterval(gameMap); }
     }
 }
@@ -66,8 +75,8 @@ function drawGame() {
     if (snakeX == foodOnMap.x && snakeY == foodOnMap.y) {
         score++;
         foodOnMap = {
-            x: Math.floor((Math.random() * 38)) * sizeSector,
-            y: Math.floor((Math.random() * 38)) * sizeSector
+            x: Math.floor((Math.random() * 36)) * sizeSector,
+            y: Math.floor((Math.random() * 36)) * sizeSector
         };
     }
         else {
@@ -82,7 +91,7 @@ function drawGame() {
             || snakeY < sizeSector || snakeY > sizeSector * 38) {
                 ctx.fillStyle = "DarkOrchid	";
                 ctx.font = "50px Arial";
-                ctx.fillText(score + " " + "Соберись Обормот!", sizeSector * 3, sizeSector * 8);
+                ctx.fillText(score + " " + "Уровень", sizeSector * 3, sizeSector * 8);
                 resetGame() };
        
         if (side == "left")
