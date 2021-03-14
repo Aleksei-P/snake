@@ -75,8 +75,8 @@ function drawGame() {
     if (snakeX == foodOnMap.x && snakeY == foodOnMap.y) {
         score++;
         foodOnMap = {
-            x: Math.floor((Math.random() * 36)) * sizeSector,
-            y: Math.floor((Math.random() * 36)) * sizeSector
+            x: foodOnMapFunc(2, 36),
+            y: foodOnMapFunc(2, 36)
         };
     }
         else {
