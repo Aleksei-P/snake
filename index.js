@@ -7,110 +7,94 @@ map.src = "map.png";
 const food = new Image();
 food.src = "Food3.png";
 
-
 let sizeSector = 17;
 
 let score = 0;
 
 function foodOnMapFunc(min, max) {
-    return (Math.floor(Math.random() * (max - min + 1)) + min) * sizeSector;
+  return (Math.floor(Math.random() * (max - min + 1)) + min) * sizeSector;
+}
+
+function resetGame() {
+  clearInterval(gameMap);
 }
 
 let foodOnMap = {
-    x: foodOnMapFunc(2, 36),
-    y: foodOnMapFunc(2, 36)
-}
-/*
-let foodOnMap = {
-    x: Math.floor((Math.random() * 36)) * sizeSector,
-    y: Math.floor((Math.random() * 36)) * sizeSector
-}
-*/
+  x: foodOnMapFunc(2, 36),
+  y: foodOnMapFunc(2, 36),
+};
 
 let snake = [];
 snake[0] = {
-    x: 20 * sizeSector,
-    y: 20 * sizeSector
-}
+  x: 20 * sizeSector,
+  y: 20 * sizeSector,
+};
 
 document.addEventListener("keydown", move);
 let side;
 
 function move(evt) {
-    if(evt.keyCode == 37 && side != "right")
-    side = "left";
-    else if (evt.keyCode == 38 && side != "down")
-    side = "up";
-    else if (evt.keyCode == 39 && side != "left")
-    side = "right";
-    else if (evt.keyCode == 40 && side != "up")
-    side = "down";
+  if (evt.keyCode == 37 && side != "right") side = "left";
+  else if (evt.keyCode == 38 && side != "down") side = "up";
+  else if (evt.keyCode == 39 && side != "left") side = "right";
+  else if (evt.keyCode == 40 && side != "up") side = "down";
 }
 
-function eatTail (head, arr) {
-    for(let i = 0; i < arr.length; i++) {
-        if (head.x == arr[i].x && head.y == arr[i].y) {
-        ctx.fillStyle = "DarkOrchid	";
-        ctx.font = "50px Arial";
-        ctx.fillText(score + " " + "уровень!", sizeSector * 3, sizeSector * 8);
-        clearInterval(gameMap); }
+function eatTail(head, arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (head.x == arr[i].x && head.y == arr[i].y) {
+      ctx.fillStyle = "DarkOrchid	";
+      ctx.font = "50px Arial";
+      ctx.fillText(score + " " + "Level !", sizeSector * 3, sizeSector * 8);
+      resetGame();
+      setTimeout(() => document.location.reload(), 2500);
     }
+  }
 }
 
 function drawGame() {
-    ctx.drawImage(map, 0, 0); //функция прорисовки карты
+  ctx.drawImage(map, 0, 0); //draft map
+  ctx.drawImage(food, foodOnMap.x, foodOnMap.y);
 
-    ctx.drawImage(food, foodOnMap.x, foodOnMap.y);
+  for (let i = 0; i < snake.length; i++) {
+    ctx.fillStyle = i == 0 ? "Maroon" : "SaddleBrown";
+    ctx.fillRect(snake[i].x, snake[i].y, sizeSector, sizeSector);
+  }
 
-    for(let i = 0; i < snake.length; i++) {
-        ctx.fillStyle = i == 0 ? "Maroon" : "SaddleBrown";
-        ctx.fillRect(snake[i].x, snake[i].y, sizeSector, sizeSector);
-    }
+  let snakeX = snake[0].x;
+  let snakeY = snake[0].y;
 
-    
+  if (snakeX == foodOnMap.x && snakeY == foodOnMap.y) {
+    score++;
+    foodOnMap = {
+      x: foodOnMapFunc(2, 36),
+      y: foodOnMapFunc(2, 36),
+    };
+  } else {
+    snake.pop();
+  }
 
-    let snakeX = snake[0].x;
-    let snakeY = snake[0].y;
+  if (snakeX < sizeSector || snakeX > sizeSector * 38 || snakeY < sizeSector || snakeY > sizeSector * 38) {
+    ctx.fillStyle = "DarkOrchid	";
+    ctx.font = "50px Arial";
+    ctx.fillText(score + " " + "Level !", sizeSector * 3, sizeSector * 8);
+    resetGame();
+    setTimeout(() => document.location.reload(), 2500);
+  }
 
-    if (snakeX == foodOnMap.x && snakeY == foodOnMap.y) {
-        score++;
-        foodOnMap = {
-            x: foodOnMapFunc(2, 36),
-            y: foodOnMapFunc(2, 36)
-        };
-    }
-        else {
-            snake.pop();
-        }
-        
-        function resetGame() {
-            clearInterval(gameMap);
-        }
+  if (side == "left") snakeX -= sizeSector;
+  if (side == "right") snakeX += sizeSector;
+  if (side == "up") snakeY -= sizeSector;
+  if (side == "down") snakeY += sizeSector;
 
-        if (snakeX < sizeSector || snakeX > sizeSector * 38 
-            || snakeY < sizeSector || snakeY > sizeSector * 38) {
-                ctx.fillStyle = "DarkOrchid	";
-                ctx.font = "50px Arial";
-                ctx.fillText(score + " " + "Уровень", sizeSector * 3, sizeSector * 8);
-                resetGame() };
-       
-        if (side == "left")
-        snakeX -= sizeSector;
-        if (side == "right")
-        snakeX += sizeSector;
-         if (side == "up")
-        snakeY -= sizeSector;
-         if (side == "down")
-        snakeY += sizeSector;
+  let head = {
+    x: snakeX,
+    y: snakeY,
+  };
 
-        let head = {
-            x: snakeX,
-            y: snakeY
-        }
+  eatTail(head, snake);
 
-        eatTail(head, snake);
+  snake.unshift(head);
+}
 
-        snake.unshift(head)
-    }
-
-let gameMap = setInterval(drawGame, 110); //интервал прорисовки
+let gameMap = setInterval(drawGame, 110);
